@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>NEW</h1>
+    <form action="{% url 'articles:create' %}" method="POST">
+      {% csrf_token %} {% comment %} POST로 바꾸니 안됨 {% endcomment %}
+      <div>
+        <label for="title">Title: </label>
+        {% comment %} name이 키의 역할을 한다. id는 라벨 태그 때문에. for가
+        연결되게 {% endcomment %}
+        <input type="text" name="title" id="title" />
+      </div>
+      <div>
+        <label for="content">Content: </label>
+        <textarea name="content" id="content"></textarea>
+      </div>
+      {% comment %} submit이 있어야 제출된다. {% endcomment %}
+      <input type="submit" />
+    </form>
+    <hr />
+    <a href="{% url 'articles:index' %}">[back]</a>
+  </body>
+</html>
